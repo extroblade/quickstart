@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: GitHub CI
 run-name: ${{ github.actor }} ran the workflow ${{ github.workflow }} on ${{ github.event_name }}🚀
 
 on: [push]
@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '21'
-          cache: 'pnpm'
 
       - name: Install pnpm
         run: npm install -g pnpm
