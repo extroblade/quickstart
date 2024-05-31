@@ -10,7 +10,7 @@ export const App = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang='ru' dir='ltr'>
+    <html lang="ru" dir="ltr">
       <body className={fonts.inter.className}>
         <ProviderComposer>{children}</ProviderComposer>
       </body>

@@ -1,0 +1,5 @@
+.next
+public
+src/shared/types
+*.config*
+custom.d.ts
