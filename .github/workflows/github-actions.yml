@@ -1,7 +1,11 @@
 name: GitHub CI
 run-name: ${{ github.actor }} ran the workflow ${{ github.workflow }} on ${{ github.event_name }}🚀
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - dev
 
 jobs:
   build:
