@@ -11,21 +11,11 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Cache Node.js
-        id: cache-node
-        uses: actions/cache@v3
-        with:
-          path: ~/.nvm/.cache
-          key: node-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            node-${{ runner.os }}-
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '21'
           cache: 'pnpm'
-        if: steps.cache-node.outputs.cache-hit != 'true'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -52,20 +42,11 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Cache Node.js
-        id: cache-node
-        uses: actions/cache@v3
-        with:
-          path: ~/.nvm/.cache
-          key: node-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            node-${{ runner.os }}-
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '21'
-        if: steps.cache-node.outputs.cache-hit != 'true'
+          cache: 'pnpm'
 
       - name: Install pnpm
         run: npm install -g pnpm
