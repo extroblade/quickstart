@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: List files for debugging
+        run: ls -R .github/actions/setup-and-install/
+
       - name: Set up and install dependencies
         uses: ./.github/actions/setup-and-install
 
@@ -34,6 +40,12 @@ jobs:
     needs: build
 
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: List files for debugging
+        run: ls -R .github/actions/setup-and-install/
+
       - name: Set up and install dependencies
         uses: ./.github/actions/setup-and-install
 
@@ -59,4 +71,3 @@ jobs:
 
       - name: Run end-to-end tests
         run: pnpm run test:e2e
-
