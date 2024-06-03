@@ -12,7 +12,7 @@ const config = {
     name: "@storybook/nextjs",
     options: {},
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["../public"],
   typescript: {
     check: false,
     checkOptions: {},
