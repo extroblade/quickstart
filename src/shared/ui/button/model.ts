@@ -9,7 +9,6 @@ type OwnProps<E extends ElementType = ElementType> = {
   children: React.ReactNode;
   variant?: Variants;
   as?: E;
-  href?: string;
 };
 
 export type Props<E extends ElementType> = OwnProps<E> &
