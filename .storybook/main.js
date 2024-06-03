@@ -12,7 +12,7 @@ const config = {
     name: "@storybook/nextjs",
     options: {},
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["../public"],
   typescript: {
     check: false,
     checkOptions: {},
@@ -20,5 +20,21 @@ const config = {
     reactDocgenTypescriptOptions: {}, // Available only when reactDocgen is set to 'react-docgen-typescript'
     skipCompiler: true,
   },
+    webpackFinal: async (config, { configType }) => {
+      // Modify webpack configuration to handle static files
+      config.module.rules.push({
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            publicPath: "/_next/static/", // Adjust the path to match Next.js public directory
+            outputPath: "static/", // Output directory within Storybook's public directory
+          },
+        },
+      });
+
+      return config;
+    },
 };
 export default config;
