@@ -7,7 +7,6 @@ export const Button = <E extends ElementType = typeof defaultElement>({
   children,
   variant = "primary",
   as,
-  href,
   className,
   ...otherProps
 }: Props<E>) => {
@@ -16,7 +15,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
 
   if (isLinkComponent(TagName)) {
     return (
-      <Link href={href || "#"} {...otherProps} className={classes}>
+      <Link href={otherProps.href || "#"} {...otherProps} className={classes}>
         {children}
       </Link>
     );
