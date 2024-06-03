@@ -12,24 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '21'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Cache pnpm store
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: pnpm-store-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-store-${{ runner.os }}-
+      - name: Set up and install dependencies
+        uses: ./.github/actions/setup-and-install
 
       - name: Set up environment file for development
         if: github.ref == 'refs/heads/dev'
@@ -39,11 +23,8 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
       - name: Generate types
-        uses: pnpm api:typegen
+        run: pnpm api:typegen
 
       - name: Build project
         run: pnpm run build
@@ -53,38 +34,16 @@ jobs:
     needs: build
 
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+      - name: Set up and install dependencies
+        uses: ./.github/actions/setup-and-install
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '21'
+      - name: Set up environment file for development
+        if: github.ref == 'refs/heads/dev'
+        run: echo "${{ secrets.DEVELOPMENT_ENV }}" > .env
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Cache pnpm store
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: pnpm-store-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-store-${{ runner.os }}-
-
-      - name: Cache Playwright browsers
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            playwright-${{ runner.os }}-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Run unit tests
-        run: pnpm run test:unit
+      - name: Set up environment file for production
+        if: github.ref == 'refs/heads/main'
+        run: echo "${{ secrets.PRODUCTION_ENV }}" > .env
 
       - name: Install Playwright browsers if not cached
         run: pnpm exec playwright install
@@ -95,5 +54,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libwoff1 libopus0 libvpx7 libevent-2.1-7
 
+      - name: Run unit tests
+        run: pnpm run test:unit
+
       - name: Run end-to-end tests
         run: pnpm run test:e2e
+
