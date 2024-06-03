@@ -11,7 +11,7 @@ if (!API_URL) {
 }
 
 const swaggerFilePath = path.resolve(__dirname, "src/shared/types/schema.yaml");
-const curlCommand = `curl ${API_URL} --user ${API_USER}:${API_PASS} -o ${swaggerFilePath}`;
+const curlCommand = `curl ${API_URL} ${API_USER && API_PASS ? `--user ${API_USER}:${API_PASS}` : ""} -o ${swaggerFilePath}`;
 
 try {
   execSync(curlCommand, { stdio: "inherit" });
