@@ -2,10 +2,12 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:prettier/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:effector/react"
   ],
   "plugins": [
-    "simple-import-sort"
+    "simple-import-sort",
+    "effector"
   ],
   "rules": {
     "simple-import-sort/imports": "error",

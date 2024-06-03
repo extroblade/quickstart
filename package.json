@@ -16,8 +16,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@effector/next": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
+    "effector": "^23.2.2",
+    "effector-react": "^23.2.1",
+    "eslint-plugin-effector": "^0.14.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
@@ -43,7 +47,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "cross-env": "^7.0.3",
-    "eslint": "^8",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
