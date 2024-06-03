@@ -3,7 +3,9 @@ const path = require("path");
 const fs = require("fs");
 require("dotenv").config();
 
-const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://gist.githubusercontent.com/ericpsimon/71899d0564e928fd1a9a7b2eca22ce31/raw/5990bfd88677568d70c76d07d0faee459240e72a/json-placeholder-api.yaml";
 
 if (!API_URL) {
   console.error("Missing required environment variables");
