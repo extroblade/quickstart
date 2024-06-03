@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 require("dotenv").config();
 
-const { API_URL, API_USER, API_PASS } = process.env;
+const { API_URL } = process.env;
 
 if (!API_URL) {
   console.error("Missing required environment variables");
@@ -11,7 +11,7 @@ if (!API_URL) {
 }
 
 const swaggerFilePath = path.resolve(__dirname, "src/shared/types/schema.yaml");
-const curlCommand = `curl ${API_URL} ${API_USER && API_PASS ? `--user ${API_USER}:${API_PASS}` : ""} -o ${swaggerFilePath}`;
+const curlCommand = `curl ${API_URL} ${process.env.API_USER && process.env.API_PASS ? `--user ${process.env.API_USER}:${process.env.API_PASS}` : ""} -o ${swaggerFilePath}`;
 
 try {
   execSync(curlCommand, { stdio: "inherit" });
