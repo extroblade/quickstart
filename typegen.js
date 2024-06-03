@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 require("dotenv").config();
 
-const { API_URL } = process.env;
+const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
 
 if (!API_URL) {
   console.error("Missing required environment variables");
