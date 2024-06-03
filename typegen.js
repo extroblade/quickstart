@@ -9,7 +9,7 @@ const API_URL =
 
 if (!API_URL) {
   console.error("Missing required environment variables");
-  //process.exit(1);
+  process.exit(1);
 }
 
 const swaggerFilePath = path.resolve(__dirname, "src/shared/types/schema.yaml");
