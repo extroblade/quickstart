@@ -8,12 +8,24 @@ importers:
 
   .:
     dependencies:
+      '@effector/next':
+        specifier: ^0.7.0
+        version: 0.7.0(effector-react@23.2.1(effector@23.2.2)(react@18.3.1))(effector@23.2.2)(react@18.3.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      effector:
+        specifier: ^23.2.2
+        version: 23.2.2
+      effector-react:
+        specifier: ^23.2.1
+        version: 23.2.1(effector@23.2.2)(react@18.3.1)
+      eslint-plugin-effector:
+        specifier: ^0.14.0
+        version: 0.14.0(effector@23.2.2)(eslint@8.57.0)
       next:
         specifier: 14.2.3
         version: 14.2.3(@babel/core@7.24.6)(@playwright/test@1.44.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -85,7 +97,7 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       eslint:
-        specifier: ^8
+        specifier: ^8.57.0
         version: 8.57.0
       eslint-config-next:
         specifier: 14.2.3
@@ -824,6 +836,13 @@ packages:
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
+
+  '@effector/next@0.7.0':
+    resolution: {integrity: sha512-8KrtdGr/mYboIM5rq5r39j2gX9lXWu/AC/+Iyp882Y0G2WO6cr8opamdOlZaVaNdJYBJQ6IyuBslhmoI2TBAOw==}
+    peerDependencies:
+      effector: ^22.8.6 || ^23.0.0
+      effector-react: ^22.5.4 || ^23.0.0
+      react: ^18.2.0
 
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
@@ -3065,6 +3084,17 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
+  effector-react@23.2.1:
+    resolution: {integrity: sha512-eyjHm095xgrDNe8wtF60w5AjaF+j4Z6XP/DxW8RvlCK4twQT5mkAbIBJxA7BXKLL74RpySai8QmjVBurzapBCw==}
+    engines: {node: '>=11.0.0'}
+    peerDependencies:
+      effector: ^23.0.0
+      react: '>=16.8.0 <19.0.0'
+
+  effector@23.2.2:
+    resolution: {integrity: sha512-gzwATi9pgZQx0TNhM2LESmoUpEO+vhibLZPCvVzi7spMvKFwKnfJV2PFj4xqNFFSC35TXaznx30ne62dCQ6ZRQ==}
+    engines: {node: '>=11.0.0'}
+
   ejs@3.1.10:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
     engines: {node: '>=0.10.0'}
@@ -3258,6 +3288,13 @@ packages:
         optional: true
       eslint-import-resolver-webpack:
         optional: true
+
+  eslint-plugin-effector@0.14.0:
+    resolution: {integrity: sha512-nMOg7yEDsRVNfXgstDrde/l0lTXzL0fbK5Y/EcTzNVN/F753bIbemJvRoedZgKaH0OrWM3HaK1OrDTphBJyN7w==}
+    engines: {node: ^16 || ^17 || ^18 || ^19 || ^20 || ^21}
+    peerDependencies:
+      effector: ^23
+      eslint: 7 || 8
 
   eslint-plugin-import@2.29.1:
     resolution: {integrity: sha512-BbPC0cuExzhiMo4Ff1BTVwHpjjv28C5R+btTOGaCRC7UEz801up0JadwkeSk5Ued6TG34uaczuVuH6qyy5YUxw==}
@@ -5053,6 +5090,11 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
+  prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+
   prettier@3.0.0:
     resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
     engines: {node: '>=14'}
@@ -6103,6 +6145,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-sync-external-store@1.2.2:
+    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -7185,6 +7232,12 @@ snapshots:
     optional: true
 
   '@discoveryjs/json-ext@0.5.7': {}
+
+  '@effector/next@0.7.0(effector-react@23.2.1(effector@23.2.2)(react@18.3.1))(effector@23.2.2)(react@18.3.1)':
+    dependencies:
+      effector: 23.2.2
+      effector-react: 23.2.1(effector@23.2.2)(react@18.3.1)
+      react: 18.3.1
 
   '@emnapi/runtime@1.2.0':
     dependencies:
@@ -10103,6 +10156,14 @@ snapshots:
 
   ee-first@1.1.1: {}
 
+  effector-react@23.2.1(effector@23.2.2)(react@18.3.1):
+    dependencies:
+      effector: 23.2.2
+      react: 18.3.1
+      use-sync-external-store: 1.2.2(react@18.3.1)
+
+  effector@23.2.2: {}
+
   ejs@3.1.10:
     dependencies:
       jake: 10.9.1
@@ -10394,6 +10455,12 @@ snapshots:
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-effector@0.14.0(effector@23.2.2)(eslint@8.57.0):
+    dependencies:
+      effector: 23.2.2
+      eslint: 8.57.0
+      prettier: 2.8.8
 
   eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
@@ -12569,6 +12636,8 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
+  prettier@2.8.8: {}
+
   prettier@3.0.0: {}
 
   prettier@3.2.5: {}
@@ -13783,6 +13852,10 @@ snapshots:
       tslib: 2.6.2
     optionalDependencies:
       '@types/react': 18.3.3
+
+  use-sync-external-store@1.2.2(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   util-deprecate@1.0.2: {}
 
