@@ -1,17 +1,10 @@
 "use client";
-
-import { useUnit } from "effector-react";
-
 import { Button } from "@/shared/ui";
 
-import { $counter, $timerTicking, buttonClicked } from "./model";
+import { useCounter } from "./model";
 
 export function AsyncCounter() {
-  const click = useUnit(buttonClicked);
-  const { counter, ticking } = useUnit({
-    counter: $counter,
-    ticking: $timerTicking,
-  });
+  const { counter, ticking, click } = useCounter();
 
   return (
     <Button onClick={() => click()}>

@@ -17,19 +17,18 @@ const config = {
     check: false,
     checkOptions: {},
     reactDocgen: 'react-docgen',
-    reactDocgenTypescriptOptions: {}, // Available only when reactDocgen is set to 'react-docgen-typescript'
+    reactDocgenTypescriptOptions: {},
     skipCompiler: true,
   },
     webpackFinal: async (config, { configType }) => {
-      // Modify webpack configuration to handle static files
       config.module.rules.push({
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         use: {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            publicPath: "/_next/static/", // Adjust the path to match Next.js public directory
-            outputPath: "static/", // Output directory within Storybook's public directory
+            publicPath: "/_next/static/",
+            outputPath: "static/",
           },
         },
       });
