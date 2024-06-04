@@ -1,4 +1,5 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
+import { useUnit } from "effector-react";
 
 export const buttonClicked = createEvent();
 export const $counter = createStore(0).on(buttonClicked, (state) => state + 1);
@@ -25,3 +26,11 @@ sample({
   fn: (s) => s + 1,
   target: $counter,
 });
+
+export const useCounter = () => {
+  return useUnit({
+    counter: $counter,
+    ticking: $timerTicking,
+    click: buttonClicked,
+  });
+};
