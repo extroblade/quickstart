@@ -1,12 +1,13 @@
 "use client";
 
-import { useInitSocket } from "../model";
+import { useInitSocket, useServiceWorker } from "../model";
 
 export const Composer = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  useInitSocket();
+  useInitSocket({ maxRetries: 5 });
+  useServiceWorker();
   return <>{children}</>;
 };

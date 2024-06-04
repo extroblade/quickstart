@@ -51,3 +51,6 @@ storybook-static
 
 robots.txt
 sitemap*.xml
+
+/public/sw.js
+/public/workbox**
