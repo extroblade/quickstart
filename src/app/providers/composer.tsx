@@ -7,7 +7,7 @@ export const Composer = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  useInitSocket({ maxRetries: 5 });
+  useInitSocket();
   useServiceWorker();
   return <>{children}</>;
 };
