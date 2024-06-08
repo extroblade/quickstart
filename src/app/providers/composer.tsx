@@ -1,6 +1,6 @@
 "use client";
 
-import { useInitSocket } from "../model";
+import { useInitSocket, useServiceWorker } from "../model";
 
 export const Composer = ({
   children,
@@ -8,5 +8,6 @@ export const Composer = ({
   children: React.ReactNode;
 }>) => {
   useInitSocket();
+  useServiceWorker();
   return <>{children}</>;
 };
