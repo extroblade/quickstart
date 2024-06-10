@@ -20,9 +20,13 @@ export default defineConfig({
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
-    ...(process.platform === 'linux' ? [] : [{
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    }])
+    ...(process.platform === "linux"
+      ? []
+      : [
+          {
+            name: "webkit",
+            use: { ...devices["Desktop Safari"] },
+          },
+        ]),
   ],
 });
