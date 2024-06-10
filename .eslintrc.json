@@ -5,10 +5,7 @@
     "plugin:storybook/recommended",
     "plugin:effector/react"
   ],
-  "plugins": [
-    "simple-import-sort",
-    "effector"
-  ],
+  "plugins": ["simple-import-sort", "effector"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"

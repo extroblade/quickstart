@@ -16,24 +16,24 @@ const config = {
   typescript: {
     check: false,
     checkOptions: {},
-    reactDocgen: 'react-docgen',
+    reactDocgen: "react-docgen",
     reactDocgenTypescriptOptions: {},
     skipCompiler: true,
   },
-    webpackFinal: async (config, { configType }) => {
-      config.module.rules.push({
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "[name].[ext]",
-            publicPath: "/_next/static/",
-            outputPath: "static/",
-          },
+  webpackFinal: async (config, { configType }) => {
+    config.module.rules.push({
+      test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+      use: {
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          publicPath: "/_next/static/",
+          outputPath: "static/",
         },
-      });
+      },
+    });
 
-      return config;
-    },
+    return config;
+  },
 };
 export default config;
