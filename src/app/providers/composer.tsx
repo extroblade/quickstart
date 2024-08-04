@@ -7,7 +7,7 @@ export const Composer = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  useInitSocket();
+  //useInitSocket();
   useServiceWorker();
   return <>{children}</>;
 };
