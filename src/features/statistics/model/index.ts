@@ -1,24 +1,24 @@
 export type TBlock = { percent: number; isActive?: boolean };
 
-type TValues = 'none' | 'percent' | 'kg' | 'sm';
-type TPeriods = 'month' | 'day';
-type TWeights = 'height' | 'weight' | 'product';
+type TValues = "none" | "percent" | "kg" | "sm";
+type TPeriods = "month" | "day";
+type TWeights = "height" | "weight" | "product";
 const values = {
-  none: '',
-  percent: '%',
-  kg: 'кг',
-  sm: 'см',
+  none: "",
+  percent: "%",
+  kg: "кг",
+  sm: "см",
 } satisfies Record<TValues, string>;
 
 const weights = {
-  height: 'Рост',
-  weight: 'Вес',
-  product: 'Продукты',
+  height: "Рост",
+  weight: "Вес",
+  product: "Продукты",
 } satisfies Record<TWeights, string>;
 
 const periods = {
-  month: 'мес.',
-  day: 'дн.',
+  month: "мес.",
+  day: "дн.",
 } satisfies Record<TPeriods, string>;
 
 type TField<T> = {
@@ -35,9 +35,16 @@ export type TCurrent = {
   weight: TWeights;
 } & TField<TValues>;
 
-const parseNumber = (number: string): number => parseFloat(number.replace(/,/g, '.').replace(/−/, '-'));
+const parseNumber = (number: string): number =>
+  parseFloat(number.replace(/,/g, ".").replace(/−/, "-"));
 
-export const useMappedData = ({ current, change }: { current: TCurrent; change: TChange }) => {
+export const useMappedData = ({
+  current,
+  change,
+}: {
+  current: TCurrent;
+  change: TChange;
+}) => {
   const isPositive = (value: number) => value > 0;
   const isNegative = (value: number) => value < 0;
 
@@ -56,7 +63,7 @@ export const useMappedData = ({ current, change }: { current: TCurrent; change: 
 
   const getChangeAmount = (value: number) => {
     if (value <= 1) {
-      return '';
+      return "";
     }
     return value;
   };
