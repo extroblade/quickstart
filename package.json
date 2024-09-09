@@ -28,6 +28,7 @@
     "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "sass": "^1.78.0",
     "socket.io-client": "^4.7.5",
     "swagger-typescript-api": "^13.0.3",
     "tailwind-merge": "^2.3.0",

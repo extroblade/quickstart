@@ -1,0 +1,70 @@
+@import '@/app/styles/variables';
+
+
+.blocks {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-end;
+  height: 190px;
+  width: 100%;
+}
+.stat, .active {
+  width: 100%;
+  background-color: hsla(217, 78%, 93%, 1);
+  border-radius: 10000px;
+  .active, &.active {
+    background-color: hsla(216, 83%, 56%, 1);
+  }
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+}
+.col {
+  max-width: 48px;
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  position: relative;
+  height: 48px;
+  .active {
+    position: absolute;
+  }
+}
+
+@include media(lg) {
+  .cols {
+    height: 176px;
+  }
+  .col {
+    max-width: 42px;
+  }
+}
+
+@include media(sm) {
+  .cols {
+    height: 104px;
+  }
+  .col {
+    max-width: 36px;
+  }
+  .row {
+    height: 36px;
+  }
+
+}
+@include media(xs) {
+  .cols {
+    height: 104px;
+  }
+  .col {
+    max-width: 40px;
+  }
+  .row {
+    height: 40px;
+  }
+}
