@@ -66,7 +66,7 @@ jobs:
       - name: Install system dependencies for Playwright
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwoff1 libopus0 libvpx7 libevent-2.1-7
+          sudo apt-get install -y libwoff1 libopus0 libevent-2.1-7
 
       - name: Run unit tests
         run: pnpm run test:unit
