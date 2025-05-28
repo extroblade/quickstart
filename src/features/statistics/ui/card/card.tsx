@@ -4,8 +4,8 @@ import { TCard, useMappedData } from "@/features/statistics/model";
 import { cn } from "@/shared/lib";
 import { Typography } from "@/shared/ui";
 
-import { Block } from "../Block";
-import cs from "./Card.module.scss";
+import { Block } from "../block";
+import cs from "./card.module.scss";
 
 export const Card = ({
   change,

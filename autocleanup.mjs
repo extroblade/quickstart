@@ -19,38 +19,41 @@
  *
  */
 
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
+import { execSync } from "child_process";
+import fs from "fs";
+import path from "path";
 
-const setDate = process.argv.includes('--set-date');
-const updateRepo = process.argv.includes('--update-repo');
-const logAmount = process.argv.includes('--log-amount');
+const setDate = process.argv.includes("--set-date");
+const updateRepo = process.argv.includes("--update-repo");
+const logAmount = process.argv.includes("--log-amount");
 
-const NAME = 'autocleanup';
+const NAME = "autocleanup";
 const START_TAG = `@${NAME}-start`;
 const END_TAG = `@${NAME}-end`;
-const UNSET_TAG = 'UNSET';
-const DATE_PATTERN = '\\d{4}-\\d{2}-\\d{2}';
-const DATE_REGEX = new RegExp(`${START_TAG}\\((${DATE_PATTERN}|${UNSET_TAG}),\\s*(${DATE_PATTERN}|\\d+[dwmy])`);
+const UNSET_TAG = "UNSET";
+const DATE_PATTERN = "\\d{4}-\\d{2}-\\d{2}";
+const DATE_REGEX = new RegExp(
+  `${START_TAG}\\((${DATE_PATTERN}|${UNSET_TAG}),\\s*(${DATE_PATTERN}|\\d+[dwmy])`,
+);
 
 const parseOrAddDate = (startDate, periodOrDate) => {
-  if (periodOrDate.match(new RegExp(DATE_PATTERN))) return new Date(periodOrDate);
+  if (periodOrDate.match(new RegExp(DATE_PATTERN)))
+    return new Date(periodOrDate);
 
   const amount = parseInt(periodOrDate.slice(0, -1), 10);
   const unit = periodOrDate.slice(-1);
 
   switch (unit) {
-    case 'd':
+    case "d":
       startDate.setDate(startDate.getDate() + amount);
       break;
-    case 'w':
+    case "w":
       startDate.setDate(startDate.getDate() + amount * 7);
       break;
-    case 'm':
+    case "m":
       startDate.setMonth(startDate.getMonth() + amount);
       break;
-    case 'y':
+    case "y":
       startDate.setFullYear(startDate.getFullYear() + amount);
       break;
     default:
@@ -68,7 +71,7 @@ const shouldRemoveCode = (line) => {
 };
 
 const setAutocleanupDate = (line) => {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   return line.replace(UNSET_TAG, today);
 };
 
@@ -82,8 +85,8 @@ const processFile = (filePath, setDate) => {
     updatedCount = 0;
 
   let lines = fs
-    .readFileSync(absPath, 'utf-8')
-    .split('\n')
+    .readFileSync(absPath, "utf-8")
+    .split("\n")
     .map((line) => {
       const isStart = line.includes(START_TAG);
       const isEnd = line.includes(END_TAG);
@@ -116,12 +119,14 @@ const processFile = (filePath, setDate) => {
     });
 
   if (removalStack.length > 0) {
-    throw new Error(`Найден открытый тег в файле: ${filePath} (file://${absPath})`);
+    throw new Error(
+      `Найден открытый тег в файле: ${filePath} (file://${absPath})`,
+    );
   }
 
   lines = lines.filter((line) => line !== null);
 
-  if (modified) fs.writeFileSync(absPath, lines.join('\n'), 'utf-8');
+  if (modified) fs.writeFileSync(absPath, lines.join("\n"), "utf-8");
   return { removed: removedCount, updated: updatedCount };
 };
 
@@ -135,7 +140,7 @@ const scanAndClean = (dir, setDate) => {
       const { removed, updated } = scanAndClean(fullPath, setDate);
       removedTotal += removed;
       updatedTotal += updated;
-    } else if (file.name.endsWith('.ts') || file.name.endsWith('.tsx')) {
+    } else if (file.name.endsWith(".ts") || file.name.endsWith(".tsx")) {
       const { removed, updated } = processFile(fullPath, setDate);
       removedTotal += removed;
       updatedTotal += updated;
@@ -150,7 +155,7 @@ const main = () => {
   const startTime = Date.now();
 
   try {
-    const { removed, updated } = scanAndClean('./src', setDate);
+    const { removed, updated } = scanAndClean("./src", setDate);
 
     console.log(`DONE IN ${Date.now() - startTime}ms`);
 
@@ -159,9 +164,9 @@ const main = () => {
     if (logAmount) console.log(amountString);
 
     if (isChanged && updateRepo) {
-      execSync('git add .');
+      execSync("git add .");
       execSync(`git commit -m "${amountString}`);
-      execSync('git push');
+      execSync("git push");
     }
   } catch (error) {
     console.error(error.message);
@@ -170,4 +175,3 @@ const main = () => {
 };
 
 main();
-
