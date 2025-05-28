@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useLayoutEffect, useRef, useState } from "react";
 
-import { useIntersectionObserver } from "@/shared/lib/hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "@/shared/lib/hooks/use-intersection-observer";
 
 export const usePaginate = <T extends unknown = any>(
   cb: () => any,
