@@ -1,5 +1,4 @@
-@import '@/app/styles/variables';
-
+@import "@/app/styles/variables";
 
 .blocks {
   display: flex;
@@ -9,11 +8,13 @@
   height: 190px;
   width: 100%;
 }
-.stat, .active {
+.stat,
+.active {
   width: 100%;
   background-color: hsla(217, 78%, 93%, 1);
   border-radius: 10000px;
-  .active, &.active {
+  .active,
+  &.active {
     background-color: hsla(216, 83%, 56%, 1);
   }
 }
@@ -55,7 +56,6 @@
   .row {
     height: 36px;
   }
-
 }
 @include media(xs) {
   .cols {

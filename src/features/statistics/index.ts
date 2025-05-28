@@ -4,5 +4,5 @@ export type {
   TChange as TStatisticsChange,
   TCurrent as TStatisticsCurrent,
 } from "./model";
-export { Block as StatisticsBlock } from "./ui/Block";
-export { Card as StatisticsCard } from "./ui/Card";
+export { Block as StatisticsBlock } from "./ui/block";
+export { Card as StatisticsCard } from "./ui/card";

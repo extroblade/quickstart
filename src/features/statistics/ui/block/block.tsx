@@ -2,7 +2,7 @@ import { cn } from "@/shared/lib";
 import { prepareMap } from "@/shared/lib/prepareMap";
 
 import { TBlock } from "../../model";
-import cs from "./Block.module.scss";
+import cs from "./block.module.scss";
 
 const getCssPercent = (_percent: number) => `${Math.round(_percent * 100)}%`;
 

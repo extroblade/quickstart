@@ -1,5 +1,4 @@
-@import '@/app/styles/variables';
-
+@import "@/app/styles/variables";
 
 .positive {
   color: hsla(155, 76%, 44%, 1);
@@ -36,7 +35,7 @@
 .description {
   font-size: 20px;
   line-height: 28px;
-  color: hsla(0, 0%, 49%, 1)
+  color: hsla(0, 0%, 49%, 1);
 }
 
 @include media(lg) {
